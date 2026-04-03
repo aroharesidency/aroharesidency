@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aroha Residency – Your Mountain Home in Manali</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF6F0;
+    --green: #2C4A3E;
+    --green-light: #3D6456;
+    --green-pale: #EEF3EF;
+    --brown: #8B6342;
+    --brown-light: #C4956A;
+    --charcoal: #2A2A2A;
+    --muted: #6B6B6B;
+    --white: #ffffff;
+    --border: rgba(44,74,62,0.15);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    background: var(--green);
+    color: rgba(255,255,255,0.85);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    padding: 9px 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .topbar a { color: rgba(255,255,255,0.85); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+  .topbar a:hover { color: #fff; }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250,246,240,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 88px;
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 2px 24px rgba(44,74,62,0.12); }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: var(--green);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+  }
+  .nav-logo span { font-style: italic; color: var(--brown); }
+  .logo {
+    height: 160px;
+    width: auto;
+    object-fit: contain;
+    margin-right: 2px;
+    display: block;
+    flex-shrink: 0;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--charcoal);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green); }
+  .nav-cta {
+    background: var(--green);
+    color: #fff !important;
+    padding: 9px 20px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--green-light) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--charcoal); border-radius: 2px; transition: 0.3s; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+  }
+  .hero-slides { position: absolute; inset: 0; }
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center center;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    transform: scale(1.04);
+    animation: kenburns 9s ease-in-out infinite alternate;
+  }
+  /* Slide 6 (gallery-13.jpg): aerial wide shot — building is top-left, pull it right */
+  .hero-slides .hero-slide:nth-child(6) { background-position: 40% center; }
+  .hero-slide.active { opacity: 1; }
+  @keyframes kenburns { from { transform: scale(1.04); } to { transform: scale(1); } }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.65) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    padding: 2rem;
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 1.2rem;
+    font-weight: 400;
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    max-width: 800px;
+    margin-bottom: 1.4rem;
+  }
+  .hero-title em { font-style: italic; color: rgba(255,220,180,0.95); }
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 300;
+    opacity: 0.88;
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 2.4rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 0.8rem; }
+  .btn-primary {
+    background: var(--brown-light);
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--brown); transform: translateY(-2px); }
+  .btn-outline {
+    border: 1.5px solid rgba(255,255,255,0.7);
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    transition: background 0.25s;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.15); }
+  .hero-dots {
+    position: absolute;
+    bottom: 1.4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+  }
+  .hero-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .hero-dot.active { background: #fff; transform: scale(1.4); }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 2rem; }
+  .section-inner { max-width: 1160px; margin: 0 auto; }
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--brown);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    color: var(--green);
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+  .section-sub {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.8;
+    max-width: 560px;
+  }
+
+  /* ── ABOUT ── */
+  .about { background: var(--white); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .about-img {
+    position: relative;
+  }
+  .about-img img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block;
+  }
+  .about-img::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: 20px;
+    bottom: 20px;
+    border: 1.5px solid var(--border);
+    border-radius: 2px;
+    z-index: 0;
+  }
+  .about-img img { position: relative; z-index: 1; }
+  .about-text p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 1.4rem;
+  }
+  .about-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.4rem;
+    font-weight: 400;
+    color: var(--green);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-top: 4px;
+  }
+  .btn-green {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    padding: 13px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    margin-top: 2rem;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .btn-green:hover { background: var(--green-light); transform: translateY(-2px); }
+
+  /* ── ROOMS ── */
+  .rooms { background: var(--cream); }
+  .rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3.5rem;
+  }
+  .room-card {
+    background: var(--white);
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .room-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(44,74,62,0.12); }
+  .room-card-img {
+    height: 240px;
+    overflow: hidden;
+  }
+  .room-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s;
+  }
+  .room-card:hover .room-card-img img { transform: scale(1.06); }
+  .room-card-body { padding: 1.8rem; }
+  .room-card-tag {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: 0.6rem;
+  }
+  .room-card-name {
+    font-family: var(--serif);
+    font-size: 1.55rem;
+    font-weight: 500;
+    color: var(--green);
+    margin-bottom: 0.7rem;
+    line-height: 1.2;
+  }
+  .room-card-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 1.4rem;
+  }
+  .room-amenities {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.4rem;
+  }
+  .amenity-tag {
+    font-size: 11px;
+    background: var(--green-pale);
+    color: var(--green);
+    padding: 4px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+  }
+  .room-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--brown);
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+  .room-link:hover { color: var(--green); }
+
+  /* ── EXPERIENCES ── */
+  .experiences { background: var(--green-pale); }
+  .exp-header { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 4rem; align-items: end; }
+  .exp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .exp-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .exp-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(44,74,62,0.1); }
+  .exp-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--green-pale);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    font-size: 20px;
+  }
+  .exp-name {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--green);
+    margin-bottom: 0.5rem;
+  }
+  .exp-desc {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── GALLERY ── */
+  .gallery { background: var(--white); }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: min-content;
+    grid-auto-flow: dense;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+  .gallery-item {
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 2px;
+    background: #ddd;
+  }
+  .gallery-item-feature { grid-column: 1 / 4; }
+  .gallery-item-wide { grid-column: 2 / 4; }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    min-height: 220px;
+    transition: transform 0.5s;
+  }
+  .gallery-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    min-height: 220px;
+    transition: transform 0.5s;
+  }
+  .gallery-item:hover img { transform: scale(1.05); }
+  .gallery-item:hover video { transform: scale(1.05); }
+  .gallery-item-video {
+    position: relative;
+  }
+  .gallery-item-video::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(to top, rgba(0,0,0,0.18), rgba(0,0,0,0.04));
+  }
+  .gallery img {
+    transition: transform 0.4s ease;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.05);
+  }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 88vh; object-fit: contain; border-radius: 2px; }
+  .lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .lightbox-close:hover { opacity: 1; }
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: #fff;
+    font-size: 1.8rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .lightbox-nav:hover { background: rgba(255,255,255,0.25); }
+  .lightbox-prev { left: 1.5rem; }
+  .lightbox-next { right: 1.5rem; }
+
+  /* ── CTA STRIP ── */
+  .cta-strip {
+    background: var(--green);
+    color: #fff;
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+  .cta-strip .section-title { color: #fff; margin-bottom: 1rem; }
+  .cta-strip p { color: rgba(255,255,255,0.8); font-size: 15px; max-width: 500px; margin: 0 auto 2.4rem; line-height: 1.8; }
+  .btn-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366;
+    color: #fff;
+    padding: 15px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .btn-wa:hover { background: #1ebc58; transform: translateY(-2px); }
+
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .cta-actions .btn-wa,
+  .cta-actions .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 52px;
+  }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--cream); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    margin-top: 3rem;
+  }
+  .contact-info h3 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: var(--green);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  .contact-info p { color: var(--muted); font-size: 14px; line-height: 1.8; margin-bottom: 1.5rem; }
+  .contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 1rem;
+  }
+  .contact-detail-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--green-pale);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .contact-detail-text { font-size: 14px; color: var(--charcoal); line-height: 1.6; }
+  .contact-detail-text strong { display: block; font-weight: 500; color: var(--green); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2px; }
+  .contact-form { background: var(--white); padding: 2.5rem; border: 1px solid var(--border); border-radius: 2px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label { display: block; font-size: 12px; font-weight: 500; color: var(--green); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--charcoal);
+    background: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--green); background: #fff; }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    width: 100%;
+    background: var(--green);
+    color: #fff;
+    border: none;
+    padding: 14px;
+    border-radius: 4px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: background 0.25s;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--green-light); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #1A2E28;
+    color: rgba(255,255,255,0.75);
+    padding: 4rem 2rem 1.5rem;
+  }
+  .footer-grid {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 1.5rem;
+  }
+  .footer-brand-name {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+  .footer-tagline { font-size: 13px; line-height: 1.7; margin-bottom: 1.5rem; }
+  .footer-socials { display: flex; gap: 10px; }
+  .social-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .social-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+  .social-links a {
+    margin-right: 15px;
+    font-size: 20px;
+    color: inherit;
+  }
+
+  .social-links a:hover {
+    opacity: 0.7;
+  }
+  .footer-col h4 {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 0.7rem; }
+  .footer-links a {
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-size: 13.5px;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: #fff; }
+  .footer-bottom {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ── FLOATING BUTTONS ── */
+  .float-wa {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 200;
+    width: 54px;
+    height: 54px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .float-wa:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+  .scroll-top {
+    position: fixed;
+    bottom: 6rem;
+    right: 2rem;
+    z-index: 200;
+    width: 40px;
+    height: 40px;
+    background: var(--green);
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 16px rgba(44,74,62,0.3);
+    transition: transform 0.2s;
+  }
+  .scroll-top.show { display: flex; }
+  .scroll-top:hover { transform: scale(1.1); }
+
+  .reviews {
+    background: var(--cream);
+  }
+  .reviews-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 3rem 0 3.5rem;
+  }
+  .reviews-inner .section-title {
+    margin-bottom: 2rem;
+  }
+  .reviews-slider {
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .review-card {
+    display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    padding: 2.2rem 2.4rem;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 18px 50px rgba(0,0,0,0.06);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .review-card.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .review-text {
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: #555555;
+    margin-bottom: 1.4rem;
+    font-weight: 400;
+  }
+  .review-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: rgba(0,0,0,0.55);
+  }
+  .review-name {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .review-stars {
+    letter-spacing: 0.12em;
+    font-size: 0.9rem;
+    color: #d4a85a;
+  }
+
+  /* ── ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .about-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; }
+    .rooms-grid { grid-template-columns: 1fr 1fr; }
+    .exp-grid { grid-template-columns: 1fr 1fr; }
+    .exp-header { grid-template-columns: 1fr; gap: 1rem; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    /* Stack: text first, image second */
+    .about-text { order: 1; }
+    .about-img  { order: 2; }
+    /* Reduce fixed image height so it doesn't dominate on tablet */
+    .about-img img { height: 360px; }
+  }
+  @media (max-width: 640px) {
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 78px; left: 0; right: 0; background: var(--cream); padding: 1rem 2rem 2rem; border-bottom: 1px solid var(--border); gap: 1rem; }
+    .nav-links.open { display: flex; }
+    .hamburger { display: flex; }
+    /* Scale navbar and logo for mobile */
+    nav { height: 78px; }
+    .logo { height: 138px; }
+    /* ── MOBILE ABOUT LAYOUT ── */
+    .about-grid { display: flex; flex-direction: column; gap: 0; }
+    .about-text { display: contents; }
+    /* 1. Stats (top, single row, compact) */
+    .about-stats {
+      order: 1;
+      width: 100%;
+      justify-content: space-between;
+      gap: 0;
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+    }
+    .about-stats > div { text-align: center; }
+    .stat-num { font-size: 1.8rem; }
+    .stat-num span { font-size: 0.9rem !important; }
+    .stat-label { font-size: 11px; white-space: nowrap; }
+    /* 2. Image (middle, fully visible, breathable) */
+    .about-img {
+      order: 2;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+    .about-img img { height: auto; aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+    .about-img::before { display: none; }
+    /* 3. Text content (bottom) */
+    .about-text > *:not(.about-stats) {
+      order: 3;
+    }
+
+    /* ── MOBILE HERO ── */
+    .hero {
+      height: 68vh;
+      min-height: 420px;
+    }
+    .hero-slide {
+      /* Show center/top of image so building/view is visible, no awkward side crop */
+      background-position: center top;
+      /* Slightly less intense ken-burns on mobile to reduce zoom feel */
+      animation: kenburns-mobile 11s ease-in-out infinite alternate;
+    }
+    /* Slide 1 (gallery-1.jpg): building sits in center-lower half of image —
+       shift down so full building + mountain are visible, not just empty sky */
+    .hero-slides .hero-slide:first-child {
+      background-position: center 42%;
+    }
+    /* Slide 5 (gallery-7.jpg): person's face + bonfire are in upper-center —
+       shift slightly down so face and flame stay in frame */
+    .hero-slides .hero-slide:nth-child(5) {
+      background-position: center 35%;
+    }
+    /* Slide 6 (gallery-13.jpg): aerial wide view — position to highlight the building 
+       and crop out excess empty darkness */
+    .hero-slides .hero-slide:nth-child(6) {
+      background-position: 35% 25%;
+    }
+    @keyframes kenburns-mobile {
+      from { transform: scale(1.02); }
+      to   { transform: scale(1); }
+    }
+    .hero-overlay {
+      /* Darker gradient specifically at the bottom to ensure high contrast against any image */
+      background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0.85) 100%);
+    }
+    .hero-content {
+      /* Group content in the center, shift slightly up (~45%) to avoid bottom UI */
+      justify-content: center;
+      padding: 0 1.5rem;
+      transform: translateY(-5%);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+      text-align: center;
+    }
+    .hero-title {
+      font-size: clamp(1.8rem, 7.5vw, 2.4rem);
+      line-height: 1.15;
+      margin-bottom: 1.2rem !important; /* Small gap heading -> subtext */
+      text-shadow: 0 2px 14px rgba(0,0,0,0.5);
+      max-width: 96%;
+    }
+    .hero-sub {
+      font-size: 0.9rem;
+      line-height: 1.55;
+      max-width: 78%; /* Tighter width for premium readable block */
+      margin-bottom: 0.5rem !important; /* Tight spacing between subtext lines */
+      opacity: 0.95 !important;
+    }
+    /* Larger gap before the CTA button so it anchors properly */
+    .hero-content p.hero-sub:last-of-type {
+      display: block;
+      margin-bottom: 2.2rem !important;
+    }
+    .hero-btns {
+      margin-top: 0;
+      display: flex;
+      justify-content: center;
+    }
+    .btn-primary, .btn-outline {
+      padding: 11px 24px;
+      font-size: 13px;
+    }
+    .hero-dots {
+      bottom: 1rem;
+    }
+
+    .rooms-grid, .exp-grid, .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item-feature, .gallery-item-wide { grid-column: 1; }
+    .form-row { grid-template-columns: 1fr; }
+    .topbar { font-size: 11px; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .about-stats { flex-wrap: wrap; gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <a href="tel:+916377764420">📞 +91 6377764420</a>
+  <a href="mailto:aroharesidency@gmail.com">✉ aroharesidency@gmail.com</a>
+  <a href="https://wa.me/916377764420?text=Hi%20I%20want%20to%20book%20a%20stay%20at%20Aroha%20Residency" target="_blank">💬 WhatsApp Booking</a>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#home" class="nav-logo"><img src="assets/images/logo.png" alt="Aroha Residency" class="logo"></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#experiences">Experiences</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="https://wa.me/916377764420" class="nav-cta" target="_blank" rel="noopener noreferrer">Book Now</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-slides">
+    <div class="hero-slide active" style="background-image: url('assets/images/gallery-1.jpg')"></div>
+    <div class="hero-slide" style="background-image: url('assets/images/gallery-2.jpg')"></div>
+    <div class="hero-slide" style="background-image: url('assets/images/gallery-3.jpg')"></div>
+    <div class="hero-slide" style="background-image: url('assets/images/gallery-4.jpg')"></div>
+    <div class="hero-slide" style="background-image: url('assets/images/gallery-7.jpg')"></div>
+    <div class="hero-slide" style="background-image: url('assets/images/gallery-13.jpg')"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title" style="margin-bottom: 2.2rem;">Discover the real, offbeat Manali</h1>
+    <h2 class="hero-sub" style="margin-bottom: 1.2rem; opacity: 0.92;">A quiet stay surrounded by apple orchards, fresh air, and mountain views</h2>
+    <p class="hero-sub" style="margin-bottom: 0; opacity: 0.88;">Whether you're here to unwind, explore, or work from the mountains — Aroha gets the balance right.</p>
+    <div class="hero-btns">
+      <a href="#rooms" class="btn-primary">Explore Rooms</a>
+      
+    </div>
+  </div>
+  <div class="hero-dots" id="heroDots">
+    <div class="hero-dot active" data-idx="0"></div>
+    <div class="hero-dot" data-idx="1"></div>
+    <div class="hero-dot" data-idx="2"></div>
+    <div class="hero-dot" data-idx="3"></div>
+    <div class="hero-dot" data-idx="4"></div>
+    <div class="hero-dot" data-idx="5"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <img src="assets/images/gallery-10.jpg" alt="Aroha Residency">
+      </div>
+      <div class="about-text">
+        <p class="eyebrow reveal">Our Story</p>
+        <h2 class="section-title reveal reveal-delay-1">Aroha Means Love,<br>In Every Detail</h2>
+        <p class="reveal reveal-delay-2">Aroha means love — and that's exactly what this place is to us.</p>
+        <p class="reveal reveal-delay-2">Every detail at Aroha Residency is built around that feeling. From the warmth when you arrive to the comfort in every room, everything is designed to feel personal.</p>
+        <p class="reveal reveal-delay-2">Located in a peaceful hillside just 20 minutes from Manali town, Aroha offers the best of both worlds — close to everything, yet far enough to truly relax.</p>
+        <p class="reveal reveal-delay-2">With 13 well-designed rooms across Standard, Deluxe, and Family Suites — all featuring private balconies and stunning mountain and garden views — there's a perfect space for every traveler.</p>
+        <p class="reveal reveal-delay-2">The property also includes an in-house café, lush gardens, apple orchards, and private parking.</p>
+        <p class="reveal reveal-delay-2">A stay at Aroha isn't just relaxing — it's something you'll want to come back to.</p>
+        <div class="about-stats reveal reveal-delay-3">
+          <div>
+            <div class="stat-num">
+              <i class="fa-solid fa-paw" style="-webkit-text-stroke: 1.5px var(--green); color: transparent; font-size: 1.95rem; line-height: 1; transform: translateY(-2px); display: inline-block;"></i>
+            </div>
+            <div class="stat-label" style="text-transform: none; letter-spacing: 0.02em; display: flex; flex-direction: column; gap: 3px;">
+              <span style="font-size: 13px; color: var(--charcoal); font-weight: 500;">Pet Friendly</span>
+              <span style="font-size: 10px; color: var(--muted); opacity: 0.8; text-transform: uppercase; letter-spacing: 0.06em;">Pets Welcome</span>
+            </div>
+          </div>
+          <div>
+            <div class="stat-num">13</div>
+            <div class="stat-label">Rooms & Suites</div>
+          </div>
+          <div>
+            <div class="stat-num">4</div>
+            <div class="stat-label">Signature Spaces</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section class="rooms" id="rooms">
+  <div class="section-inner">
+    <div style="text-align:center; margin-bottom: 3.5rem;">
+      <p class="eyebrow reveal">Accommodation</p>
+      <h2 class="section-title reveal reveal-delay-1" style="margin: 0 auto;">Our Rooms</h2>
+      <p class="section-sub reveal reveal-delay-2" style="margin: 0 auto; text-align:center;">Every room at Aroha is designed to make you feel at home in the mountains.</p>
+    </div>
+    <div class="rooms-grid">
+      <div class="room-card reveal">
+        <div class="room-card-img">
+          <img src="assets/images/standard-room.jpg" alt="Standard Room">
+        </div>
+        <div class="room-card-body">
+          <div class="room-card-tag">Standard</div>
+          <h3 class="room-card-name">Standard Room</h3>
+          <p class="room-card-desc">Simple, cozy, and practical. Located beside the garden with sunlit windows offering peaceful green and mountain views. A comfortable stay at a great value.</p>
+          <div class="room-amenities">
+            <span class="amenity-tag">Free WiFi</span>
+            <span class="amenity-tag">Hot Water</span>
+            <span class="amenity-tag">Heater</span>
+            <span class="amenity-tag">Room Service</span>
+          </div>
+        </div>
+      </div>
+      <div class="room-card reveal reveal-delay-1">
+        <div class="room-card-img">
+          <img src="assets/images/deluxe-room.jpg" alt="Deluxe Room">
+        </div>
+        <div class="room-card-body">
+          <div class="room-card-tag">Deluxe</div>
+          <h3 class="room-card-name">Deluxe Room</h3>
+          <p class="room-card-desc">Private balcony with sweeping Himalayan views, apple orchards, and garden scenery. Perfect for couples, friends, or solo travelers looking for a scenic stay.</p>
+          <div class="room-amenities">
+            <span class="amenity-tag">Private Balcony</span>
+            <span class="amenity-tag">Mountain View</span>
+            <span class="amenity-tag">Free WiFi</span>
+            <span class="amenity-tag">Heater</span>
+          </div>
+        </div>
+      </div>
+      <div class="room-card reveal reveal-delay-2">
+        <div class="room-card-img">
+          <img src="assets/images/family-suite.jpg" alt="Family Suite">
+        </div>
+        <div class="room-card-body">
+          <div class="room-card-tag">Family</div>
+          <h3 class="room-card-name">Family Suite</h3>
+          <p class="room-card-desc">Spacious and designed for groups or families. Multiple bedding options, private balcony, and 360° views of mountains and orchards for a complete experience.</p>
+          <div class="room-amenities">
+            <span class="amenity-tag">Spacious</span>
+            <span class="amenity-tag">Multi-bed</span>
+            <span class="amenity-tag">Free WiFi</span>
+            <span class="amenity-tag">Hot Water</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section class="experiences" id="experiences">
+  <div class="section-inner">
+    <div class="exp-header">
+      <div>
+        <p class="eyebrow reveal">Beyond the Room</p>
+        <h2 class="section-title reveal reveal-delay-1">Experiences at Aroha</h2>
+      </div>
+      <div>
+        <p class="section-sub reveal reveal-delay-2">We go beyond just providing rooms. We create experiences that make your stay enjoyable, comfortable, and unforgettable.</p>
+      </div>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card reveal">
+        <div class="exp-icon">🏍️</div>
+        <div class="exp-name">Biker Friendly Stay</div>
+        <p class="exp-desc">Secure parking, welcoming vibe, and a place to connect with fellow riders.</p>
+      </div>
+      <div class="exp-card reveal reveal-delay-1">
+        <div class="exp-icon">🧘</div>
+        <div class="exp-name">Mindful Wellness Retreats</div>
+        <p class="exp-desc">Dedicated yoga and meditation spaces surrounded by peaceful mountain air.</p>
+      </div>
+      <div class="exp-card reveal reveal-delay-2">
+        <div class="exp-icon">💻</div>
+        <div class="exp-name">Workation Ready</div>
+        <p class="exp-desc">Reliable WiFi, quiet environment, and views that make work feel lighter.</p>
+      </div>
+      <div class="exp-card reveal">
+        <div class="exp-icon">🎮</div>
+        <div class="exp-name">Indoor & Outdoor Games</div>
+        <p class="exp-desc">Cards, ludo, badminton — simple fun for relaxed evenings.</p>
+      </div>
+      <div class="exp-card reveal reveal-delay-1">
+        <div class="exp-icon">☕</div>
+        <div class="exp-name">In-house Café</div>
+        <p class="exp-desc">Fresh meals, Himachali flavors, North Indian and Chinese dishes, plus snacks and beverages.</p>
+      </div>
+      <div class="exp-card reveal reveal-delay-2">
+        <div class="exp-icon">🔥</div>
+        <div class="exp-name">Bonfire Evenings</div>
+        <p class="exp-desc">Cozy nights under open skies with a warm bonfire setup.</p>
+      </div>
+      <div class="exp-card reveal">
+        <div class="exp-icon">🏔️</div>
+        <div class="exp-name">Secret Waterfall Hikes & Picnic Spots</div>
+        <p class="exp-desc">Discover hidden locations guided by locals — away from crowded tourist spots.</p>
+      </div>
+      <div class="exp-card reveal reveal-delay-1">
+        <div class="exp-icon">🚗</div>
+        <div class="exp-name">Private Parking</div>
+        <p class="exp-desc">Safe and dedicated parking for cars and bikes.</p>
+      </div>
+      <div class="exp-card reveal reveal-delay-2">
+        <div class="exp-icon">🗺️</div>
+        <div class="exp-name">Custom Itineraries</div>
+        <p class="exp-desc">Personalized plans to explore both hidden gems and popular attractions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="section-inner">
+    <div style="text-align:center; margin-bottom:1rem;">
+      <p class="eyebrow reveal">Visual Tour</p>
+      <h2 class="section-title reveal reveal-delay-1" style="margin: 0 auto;">A Glimpse of Aroha</h2>
+      <p class="section-sub reveal reveal-delay-2" style="margin: 0.6rem auto 0; text-align:center;">Explore Aroha Residency through visuals — from cozy rooms to breathtaking mountain views that capture the peaceful experience of your stay.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item gallery-item-feature reveal" data-idx="0">
+        <img src="assets/images/gallery-1.jpg" alt="Aroha Residency in Snow">
+      </div>
+      <div class="gallery-item reveal reveal-delay-2" data-idx="1">
+        <img src="assets/images/gallery-3.jpg" alt="Gallery Image">
+      </div>
+      <div class="gallery-item reveal" data-idx="2">
+        <img src="assets/images/gallery-14.jpg" alt="Snowy Garden & Signage" style="object-position: center 35%;">
+      </div>
+      <div class="gallery-item gallery-item-wide reveal" data-idx="3">
+        <img src="assets/images/gallery-4.jpg" alt="Gallery Image">
+      </div>
+      <div class="gallery-item reveal reveal-delay-1" data-idx="3">
+        <img src="assets/images/gallery-5.jpg" alt="Gallery Image">
+      </div>
+      <div class="gallery-item reveal reveal-delay-2" data-idx="4">
+        <img src="assets/images/gallery-6.jpg" alt="Gallery Image">
+      </div>
+      <div class="gallery-item reveal" data-idx="5">
+        <img src="assets/images/gallery-7.jpg" alt="Gallery Image">
+      </div>
+      <div class="gallery-item reveal reveal-delay-1" data-idx="6">
+        <img src="assets/images/gallery-8.jpg" alt="Gallery Image">
+      </div>
+      <div class="gallery-item reveal reveal-delay-2" data-idx="7">
+        <img src="assets/images/gallery-9.jpg" alt="Gallery Image">
+      </div>
+      <div class="gallery-item reveal" data-idx="8">
+        <img src="assets/images/gallery-13.jpg" alt="Gallery Image">
+      </div>
+      <div class="gallery-item gallery-item-video reveal" data-idx="9">
+        <video autoplay muted loop playsinline preload="none" poster="assets/images/gallery-1.jpg" data-src="assets/videos/AROHA-Video.mp4"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="about" id="location">
+  <div class="section-inner">
+    <div style="text-align:center; margin-bottom:1rem;">
+      <p class="eyebrow reveal">Location</p>
+      <h2 class="section-title reveal reveal-delay-1" style="margin: 0 auto;">Location</h2>
+      <p class="section-sub reveal reveal-delay-2" style="margin: 0.6rem auto 0; text-align:center;">Located on the Kullu-Naggar highway, surrounded by Manali's apple orchards, just 20 minutes from the main town. Close to everything, yet peaceful and away from the crowd.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">&#8592;</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" id="lbNext">&#8594;</button>
+</div>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="section-inner">
+    <div class="reviews-inner">
+      <p class="eyebrow reveal">Guest Stories</p>
+      <h2 class="section-title reveal reveal-delay-1">What Our Guests Feel</h2>
+      <div class="reviews-slider">
+
+        <div class="review-card active reveal reveal-delay-2">
+          <p class="review-text">“The stay was very nice, with clean rooms and warm hosts. The 360° mountain view was the best feeling here.”</p>
+          <div class="review-meta">
+            <span class="review-name">Kunal Puri</span>
+            <span class="review-stars">★★★★★</span>
+          </div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-2">
+          <p class="review-text">“Had a really wonderful stay at Aroha Residency. The calm atmosphere truly adds to the overall peaceful experience.”</p>
+          <div class="review-meta">
+            <span class="review-name">dj mumick</span>
+            <span class="review-stars">★★★★★</span>
+          </div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-2">
+          <p class="review-text">“They have a big open space to enjoy with friends and family — perfect for groups and private gatherings.”</p>
+          <div class="review-meta">
+            <span class="review-name">svkplastics</span>
+            <span class="review-stars">★★★★★</span>
+          </div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-2">
+          <p class="review-text">“A stay that felt like home — thoughtful details, kind people, and views we’ll remember. Definitely coming back.”</p>
+          <div class="review-meta">
+            <span class="review-name">Breezy Wadhwa</span>
+            <span class="review-stars">★★★★★</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <h2 class="section-title" style="font-size: clamp(2rem,4vw,3rem);">Ready for Your Mountain Escape?</h2>
+  <p>Book your stay at Aroha Residency and experience comfort, nature, and peace like never before. We're just a message away.</p>
+  <div class="cta-actions">
+    <a href="https://wa.me/916377764420" class="btn-wa" target="_blank" rel="noopener noreferrer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      WhatsApp Booking
+    </a>
+    <a href="https://www.airbnb.co.in/p/aroharesidencymanali" class="btn-outline" target="_blank" rel="noopener noreferrer">Airbnb</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Aroha Residency</div>
+      <p class="footer-tagline">Your boutique mountain home, just 20 minutes from Manali. Where comfort meets the quiet of the hills.</p>
+      <p class="footer-tagline" style="margin: 0 0 0.9rem;">Follow Us:</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/aroharesidency" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/share/1CiFnPU56s/" target="_blank">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul class="footer-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#rooms">Our Rooms</a></li>
+        <li><a href="#experiences">Experiences</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our Rooms</h4>
+      <ul class="footer-links">
+        <li><a href="#rooms">Standard Room</a></li>
+        <li><a href="#rooms">Deluxe Room</a></li>
+        <li><a href="#rooms">Family Suite</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul class="footer-links">
+        <li><a href="tel:+916377764420">+91 6377764420</a></li>
+        <li><a href="mailto:aroharesidency@gmail.com">aroharesidency@gmail.com</a></li>
+        <li><a href="https://wa.me/916377764420" target="_blank" rel="noopener noreferrer">WhatsApp: 6377764420</a></li>
+        <li><a href="#reviews">Google Reviews</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom" style="max-width:1160px; margin:0 auto;">
+    <span>© 2025 Aroha Residency. All rights reserved.</span>
+    <span>Crafted with ♥ for mountain travelers</span>
+  </div>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<a href="https://wa.me/916377764420?text=Hi%20I%20want%20to%20book%20a%20stay%20at%20Aroha%20Residency" class="float-wa" target="_blank" title="Chat on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  // NAV SCROLL
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+    document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 400);
+  });
+
+  // HAMBURGER
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  // HERO SLIDER
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  let current = 0;
+  function goSlide(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+  dots.forEach(d => d.addEventListener('click', () => goSlide(+d.dataset.idx)));
+  setInterval(() => goSlide(current + 1), 5000);
+
+  // SCROLL REVEAL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+
+  // LAZY LOAD GALLERY VIDEO
+  const gallerySection = document.getElementById('gallery');
+  const galleryHeroVideo = document.querySelector('.gallery-item-video video');
+  if (gallerySection && galleryHeroVideo) {
+    const loadGalleryVideo = () => {
+      if (galleryHeroVideo.dataset.src && !galleryHeroVideo.src) {
+        galleryHeroVideo.src = galleryHeroVideo.dataset.src;
+        galleryHeroVideo.load();
+      }
+    };
+    const galleryObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadGalleryVideo();
+          galleryObserver.unobserve(gallerySection);
+        }
+      });
+    }, { threshold: 0.2 });
+    galleryObserver.observe(gallerySection);
+  }
+
+  // LIGHTBOX
+  const galleryItems = [...document.querySelectorAll('.gallery-item')];
+  const galleryImgs = galleryItems.map(item => {
+    const img = item.querySelector('img');
+    if (img) return img.src;
+    const video = item.querySelector('video');
+    if (!video) return '';
+    return video.getAttribute('poster') || video.currentSrc || video.src || '';
+  });
+  let lbIdx = 0;
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+      lbIdx = +item.dataset.idx;
+      lbImg.src = galleryImgs[lbIdx];
+      lb.classList.add('open');
+    });
+  });
+  document.getElementById('lbClose').addEventListener('click', () => lb.classList.remove('open'));
+  document.getElementById('lbPrev').addEventListener('click', () => { lbIdx = (lbIdx - 1 + galleryImgs.length) % galleryImgs.length; lbImg.src = galleryImgs[lbIdx]; });
+  document.getElementById('lbNext').addEventListener('click', () => { lbIdx = (lbIdx + 1) % galleryImgs.length; lbImg.src = galleryImgs[lbIdx]; });
+  lb.addEventListener('click', e => { if (e.target === lb) lb.classList.remove('open'); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') lb.classList.remove('open');
+    if (e.key === 'ArrowLeft') document.getElementById('lbPrev').click();
+    if (e.key === 'ArrowRight') document.getElementById('lbNext').click();
+  });
+
+  // FORM SUBMIT
+  function handleFormSubmit() {
+    alert('Thank you for your enquiry! We will get back to you shortly on WhatsApp or Email.');
+  }
+</script>
+<script>
+  let reviewIndex = 0;
+  const reviewCards = document.querySelectorAll('.review-card');
+
+  function showReview() {
+    if (!reviewCards.length) return;
+    reviewCards[reviewIndex].classList.remove('active');
+    reviewIndex = (reviewIndex + 1) % reviewCards.length;
+    reviewCards[reviewIndex].classList.add('active');
+  }
+
+  if (reviewCards.length) {
+    reviewCards[0].classList.add('active');
+    setInterval(showReview, 4500);
+  }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
