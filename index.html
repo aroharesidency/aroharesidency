@@ -1231,7 +1231,9 @@
         <img src="assets/images/gallery-13.jpg" alt="Gallery Image">
       </div>
       <div class="gallery-item gallery-item-video reveal" data-idx="9">
-        <video autoplay muted loop playsinline preload="none" poster="assets/images/gallery-1.jpg" data-src="assets/videos/AROHA-Video.mp4"></video>
+        <video autoplay muted loop playsinline poster="assets/images/gallery-1.jpg">
+          <source src="assets/videos/AROHA-Video.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
   </div>
@@ -1404,26 +1406,6 @@
   }, { threshold: 0.12 });
   reveals.forEach(r => observer.observe(r));
 
-  // LAZY LOAD GALLERY VIDEO
-  const gallerySection = document.getElementById('gallery');
-  const galleryHeroVideo = document.querySelector('.gallery-item-video video');
-  if (gallerySection && galleryHeroVideo) {
-    const loadGalleryVideo = () => {
-      if (galleryHeroVideo.dataset.src && !galleryHeroVideo.src) {
-        galleryHeroVideo.src = galleryHeroVideo.dataset.src;
-        galleryHeroVideo.load();
-      }
-    };
-    const galleryObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          loadGalleryVideo();
-          galleryObserver.unobserve(gallerySection);
-        }
-      });
-    }, { threshold: 0.2 });
-    galleryObserver.observe(gallerySection);
-  }
 
   // LIGHTBOX
   const galleryItems = [...document.querySelectorAll('.gallery-item')];
